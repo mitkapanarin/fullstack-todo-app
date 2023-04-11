@@ -31,6 +31,7 @@ UserRouter.post("/create-users", (req, res) => {
     }
   });
 });
+
 UserRouter.delete("/delete-users/:id", (req, res) => {
   const id = req.params.id;
   readDataFromFile(databaseName, (err, data) => {
@@ -75,17 +76,6 @@ UserRouter.get("/get-one-user/:id", (req, res) => {
   });
 });
 
-UserRouter.get("/get-one-user/:id", (req, res) => {
-  readDataFromFile(databaseName, (err, data) => {
-    if (err) {
-      res.json({
-        message: "unable to access database",
-      });
-    } else {
-      res.json(JSON.parse(data));
-    }
-  });
-});
 UserRouter.get("/get-all-users", (req, res) => {
   readDataFromFile(databaseName, (err, data) => {
     if (err) {

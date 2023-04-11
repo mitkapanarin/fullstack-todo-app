@@ -1,11 +1,29 @@
+
 [
   {
     "name": "mitka",
     "email": "mitka@gmail.com",
     "password": "123",
-    "tasks": [],
+    "tasks": [
+      {
+      "id": "khkhgkjgjhfdht",
+      "title": "Finish project",
+      "description": "Complete the project To-Do App",
+      "status": "in progress",
+      "dueDate": "2023-04-12"
+    },
+    {
+      "id": "lkkjgjhfdhtLKJ",
+      "title": "Buy groceries",
+      "description": "Buy groceries for the week.",
+      "status": "not started",
+      "dueDate": "2023-04-15"
+    }
+  ],
     "id": "8Eyy5TI9dLvItahYAL7RT"
-  },
+  }
+  
+  ,
   {
     "name": "mitka panarin",
     "email": "mitka@gmail.com",
