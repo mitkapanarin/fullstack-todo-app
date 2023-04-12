@@ -35,7 +35,7 @@ UserRouter.delete("/delete-users/:id", (req, res) => {
   const id = req.params.id;
   readDataFromFile(databaseName, (err, data) => {
     if (err) {
-      res.json({ message: "Unable to access database" });
+      res.status(500).json({ message: "Unable to access database" });
     } else {
       const oldData = JSON.parse(data);
       const filteredData = oldData.filter((item) => item.id !== id);
