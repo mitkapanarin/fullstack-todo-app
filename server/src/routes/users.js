@@ -1,8 +1,7 @@
 import express from "express";
-import { readDataFromFile, writeDataToFile } from "../utils/files.js";
+import { readDataFromFile, writeDataToFile, databaseName } from "../utils/files.js";
 import { nanoid } from "nanoid";
 
-const databaseName = "dataBase.json";
 export const UserRouter = express.Router();
 
 // create-users
@@ -14,7 +13,7 @@ export const UserRouter = express.Router();
 UserRouter.post("/create-users", (req, res) => {
   readDataFromFile(databaseName, (err, data) => {
     if (err) {
-      res.json({
+      res.status(500).json({
         message: "unable to access database",
       });
     } else {
@@ -25,7 +24,7 @@ UserRouter.post("/create-users", (req, res) => {
             message: "cannot write data to database",
           });
         } else {
-          res.json(newData);
+          res.status(201).json(newData);
         }
       });
     }
@@ -47,7 +46,7 @@ UserRouter.delete("/delete-users/:id", (req, res) => {
           if (err) {
             res.json({ message: "Failed to delete user" });
           } else {
-            res.json({ message: "User deleted successfully" });
+            res.status(204).json({ message: "User deleted successfully" });
           }
         });
       }
@@ -66,9 +65,9 @@ UserRouter.get("/get-one-user/:id", (req, res) => {
       const users = JSON.parse(data);
       const user = users.find((item) => item.id === userId);
       if (user) {
-        res.json(user);
+        res.status(200).json(user);
       } else {
-        res.json({
+        res.status(404).json({
           message: "user not found",
         });
       }
@@ -83,7 +82,36 @@ UserRouter.get("/get-all-users", (req, res) => {
         message: "unable to access database",
       });
     } else {
-      res.json(JSON.parse(data));
+      res.status(200).json(JSON.parse(data));
+    }
+  });
+});
+
+UserRouter.put("/update-user/:id", (req, res) => {
+  const { id } = req.params;
+
+  readDataFromFile(databaseName, (err, data) => {
+    if (err) {
+      res.json({ message: "cant read database" });
+    } else {
+      const updatedData = JSON.parse(data).map((item) => {
+        if (item.id === id) {
+          return { ...item, ...req.body };
+        } else {
+          return item;
+        }
+      });
+
+      writeDataToFile(databaseName, JSON.stringify(updatedData), (err)=>{
+        if(err){
+          res.json({ message: " can not update"})
+        }
+        else{
+          res.json({
+            message: "successfully updated user"
+          })
+        }
+      })
     }
   });
 });

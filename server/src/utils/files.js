@@ -1,5 +1,7 @@
 import fs from 'fs'
 
+export const databaseName = "dataBase.json";
+
 export function readDataFromFile(filePath, callback) {
   fs.readFile(filePath, (err, data) => {
     if (err) {
