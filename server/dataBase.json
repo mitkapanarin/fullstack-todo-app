@@ -17,17 +17,23 @@
     "id": "ksldncknsdc"
   },
   {
-    "name": "mitka",
-    "email": "mitka@gmail.com",
+    "name": "Mitka Panarin",
+    "email": "mitkapanarin@gmail.com",
     "password": "123",
     "tasks": [
       {
-        "task": "one task",
+        "task": "new task",
         "due": "today",
         "status": "active",
-        "id": "X2y-pIobbgmg_vDV-Pw1-"
+        "id": "DA19MOxzqmdFfT5gGxHnd"
+      },
+      {
+        "task": "study study study",
+        "due": "today",
+        "status": "active",
+        "id": "t-V5-pGrkfw85MAmsdJsb"
       }
     ],
-    "id": "lqR7vS1tU9FvXnLPp0oOZ"
+    "id": "ABCDksldncknsdc"
   }
 ]
