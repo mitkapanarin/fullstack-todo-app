@@ -55,5 +55,15 @@
     "email": "something@gmail.com",
     "password": "helloMitka",
     "id": "rxAHlWl5AMA7tJE7zfkQL"
+  },
+  {
+    "email": "test@gmail.com",
+    "password": "testtest",
+    "id": "hCribxFzrcVkcXoDViUDI"
+  },
+  {
+    "email": "testing@gmail.com",
+    "password": "testtest",
+    "id": "rInL3Alp03vzxeY36U7ia"
   }
 ]
