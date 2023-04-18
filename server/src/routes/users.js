@@ -31,6 +31,41 @@ UserRouter.post("/create-users", (req, res) => {
   });
 });
 
+UserRouter.post("/login", (req,res)=>{
+  const {email, password} = req.body
+  readDataFromFile(databaseName, (err, data)=>{
+    if(err){
+      res.status(500).json({
+        message: "cant access database"
+      })
+    }else{
+
+      const findUser = JSON.parse(data).find(item=> item.email === email)
+
+      if(findUser){
+        if(findUser.password === password){
+          res.status(200).json({
+            message: "Login Successful",
+            findUser
+          })
+        }
+        else{
+          res.status(404).json({
+            message: "Password doesn't match"
+          })
+        }
+      }
+      else{
+        res.status(404).json({
+          message: "User Not Found"
+        })
+      }
+
+      
+    }
+  })
+})
+
 UserRouter.delete("/delete-users/:id", (req, res) => {
   const id = req.params.id;
   readDataFromFile(databaseName, (err, data) => {
