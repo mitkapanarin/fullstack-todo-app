@@ -21,6 +21,13 @@ export const userSlice = createSlice({
       state.id = id
       state.password = password
 
+      localStorage.setItem("userState", JSON.stringify(state))
+    },
+    updateUserStateData : (state, action)=>{
+      const {email, id, password} = action.payload
+      state.email = email;
+      state.id = id
+      state.password = password
 
       localStorage.setItem("userState", JSON.stringify(state))
     },
@@ -34,4 +41,4 @@ export const userSlice = createSlice({
   },
 });
 
-export const { login, logout } = userSlice.actions;
+export const { login, logout, updateUserStateData } = userSlice.actions;

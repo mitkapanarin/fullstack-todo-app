@@ -3,9 +3,11 @@ import { useState } from "react";
 import { useLoginUserMutation } from "../store/API/userApi";
 import { login } from "../store/Slices/userSlice";
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const dispatch = useDispatch() // initialization
+  const navigate = useNavigate()
   const store = useSelector((z)=>z)
   console.log(store)
 
@@ -21,7 +23,8 @@ const Login = () => {
     try{
       const x =  await  loginUser(data)
       console.log(x.data.findUser)
-      await dispatch(login(x.data.findUser))
+      dispatch(login(x.data.findUser))
+      navigate("/")
     }
     catch(err){
       console.log('error occured')
