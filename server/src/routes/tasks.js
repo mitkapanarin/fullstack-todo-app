@@ -73,7 +73,7 @@ taskRouter.post("/create-one-task/:userID", (req, res) => {
         if (item.id === userID) {
           return {
             ...item,
-            tasks: [...item.tasks, { ...req.body, id: nanoid() }],
+            tasks: [...item?.tasks, { ...req.body, id: nanoid() }],
           };
         } else {
           return item;

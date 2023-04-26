@@ -17,7 +17,7 @@ UserRouter.post("/create-users", (req, res) => {
         message: "unable to access database",
       });
     } else {
-      const newData = [...JSON.parse(data), { ...req.body, id: nanoid() }];
+      const newData = [...JSON.parse(data), { ...req.body, id: nanoid(), tasks: [] }];
       writeDataToFile(databaseName, JSON.stringify(newData), (err) => {
         if (err) {
           res.json({

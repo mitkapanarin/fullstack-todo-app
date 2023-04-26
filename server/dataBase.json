@@ -1,1 +1,100 @@
-[{"name":"Joy Shaheb","email":"joy@gmail.com","password":"123","tasks":[{"task":"another task","due":"today","id":"83WH4zEWo6kcBI-TlCX1-"},{"task":"another task","due":"today","id":"W_ydp9OrAWdEqMHFAdlj-"},{"task":"another task","due":"today","id":"6mOMRTIoi0h1rXuV9b7ZA"},{"task":"another task","due":"today","status":"true","id":"n7fkwMALr9Gjbe3wAjZ2V"}],"id":"ksldncknsdc"},{"name":"Mitka Panarin","email":"mitkapanarin@gmail.com","password":"123","tasks":[{"task":"new task","due":"today","status":"active","id":"DA19MOxzqmdFfT5gGxHnd"},{"task":"study study study","due":"today","status":"active","id":"t-V5-pGrkfw85MAmsdJsb"}],"id":"ABCDksldncknsdc"},{"email":"abbbb@gmail.com","password":"123","id":"KFCFo3M7Buab_8adVg-hA"},{"email":"karolina@gmail.com","password":"scsdcsdcsdcsdcsdc","id":"PlabMY4_h_X72in4ou5k5"},{"email":"123@gmail.com","password":"abcd123","id":"_qrRYdFpjbWPMwUQywM7H"},{"email":"something@gmail.com","password":"helloMitka","id":"rxAHlWl5AMA7tJE7zfkQL"},{"email":"test@gmail.com","password":"testtest","id":"hCribxFzrcVkcXoDViUDI"},{"email":"testing@gmail.com","password":"testtest","id":"rInL3Alp03vzxeY36U7ia"},{"email":"joysh@gmail.com","password":"12311111111111","id":"RHeLIMfvDBhwUnyyggk2C"},{"email":"joysh@gmail.com","password":"123","id":"NJUBkhPW_IKp88_JU5NTf"},{"email":"joysh@gmail.com","password":"123","id":"c70an_1Q29bJf8v_MnF7B"},{"email":"joysh@gmail.com","password":"123","id":"lVP93-77gPw87cHRCQ120"},{"email":"joysh@gmail.com","password":"123","id":"jQKoJeBA6m-63RT9iEY_U"}]
+[
+  {
+    "name": "Joy Shaheb",
+    "email": "joy@gmail.com",
+    "password": "123",
+    "tasks": [
+      {
+        "task": "another task",
+        "deadline": "today",
+        "id": "83WH4zEWo6kcBI-TlCX1-"
+      },
+      {
+        "task": "another task",
+        "deadline": "today",
+        "id": "W_ydp9OrAWdEqMHFAdlj-"
+      },
+      {
+        "task": "another task",
+        "deadline": "today",
+        "id": "6mOMRTIoi0h1rXuV9b7ZA"
+      },
+      {
+        "task": "another task",
+        "deadline": "today",
+        "status": "true",
+        "id": "n7fkwMALr9Gjbe3wAjZ2V",
+        "description": "optional"
+      }
+    ],
+    "id": "ksldncknsdc"
+  },
+  {
+    "name": "Mitka Panarin",
+    "email": "mitkapanarin@gmail.com",
+    "password": "123",
+    "tasks": [
+      {
+        "task": "new task",
+        "deadline": "today",
+        "status": "active",
+        "id": "DA19MOxzqmdFfT5gGxHnd"
+      },
+      {
+        "task": "study study study",
+        "deadline": "today",
+        "status": "active",
+        "id": "t-V5-pGrkfw85MAmsdJsb"
+      }
+    ],
+    "id": "ABCDksldncknsdc"
+  },
+  {
+    "email": "test@gmail.com",
+    "password": "password",
+    "id": "hCribxFzrcVkcXoDViUDI",
+    "tasks": [
+      {
+        "task": "study study again",
+        "due": "today",
+        "status": "active",
+        "id": "7u960mzzo5HpwjEcx24TM"
+      },
+      {
+        "task": "ji",
+        "deadline": "2023-04-06",
+        "status": false,
+        "description": "khjbhbjhb",
+        "id": "SRFKR1UMvDitdu8qqCF76"
+      },
+      {
+        "task": "ji",
+        "deadline": "2023-04-06",
+        "status": false,
+        "description": "khjbhbjhb",
+        "id": "8b_mGea3jI6wYXLWmEv_6"
+      },
+      {
+        "task": "sdcsdcsdc",
+        "deadline": "2023-04-05",
+        "status": false,
+        "description": "sdcsdcsdcsd",
+        "id": "cB6l9bo4ytlXwrimonfi2"
+      },
+      {
+        "task": "have fun!!!",
+        "deadline": "2023-04-28",
+        "status": false,
+        "description": "go out",
+        "id": "vA0OgXeB7382lXV6-cj6-"
+      },
+      {
+        "task": "123456",
+        "deadline": "2023-04-29",
+        "status": false,
+        "description": "123456",
+        "id": "IouJJL0mr6NLgseucwaNZ"
+      }
+    ]
+  }
+]
