@@ -126,9 +126,9 @@ taskRouter.delete("/delete-task/:userID/:taskID", (req, res)=>{
   })
 });
 
-taskRouter.patch("/update-task/:userID/:taskID", (req, res) => {
+taskRouter.put("/update-task/:userID/:taskID", (req, res) => {
   const { userID, taskID } = req.params;
-  const { task, due, status } = req.body;
+  const { task, deadline, status, description,  } = req.body;
   readDataFromFile(databaseName, (err, data) => {
     if (err) {
       res.status(404).json({
@@ -146,8 +146,9 @@ taskRouter.patch("/update-task/:userID/:taskID", (req, res) => {
           res.status(404).json({ message: "Task not found" });
         } else {
           users[userIndex].tasks[taskIndex].task = task || users[userIndex].tasks[taskIndex].task;
-          users[userIndex].tasks[taskIndex].due = due || users[userIndex].tasks[taskIndex].due;
+          users[userIndex].tasks[taskIndex].deadline = deadline || users[userIndex].tasks[taskIndex].deadline;
           users[userIndex].tasks[taskIndex].status = status || users[userIndex].tasks[taskIndex].status;
+          users[userIndex].tasks[taskIndex].description = description || users[userIndex].tasks[taskIndex].description;
 
           writeDataToFile(databaseName, JSON.stringify(users), (err) => {
             if (err) {

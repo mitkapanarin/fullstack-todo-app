@@ -2,18 +2,18 @@ import React from 'react'
 import Card from '../components/Card'
 import AddTask from '../components/AddTask'
 import { nanoid } from 'nanoid'
-import getUserTasks from './geGetUserTasks'
+import { useGetAllTasksQuery } from '../store/API/tasksApi'
+import { useSelector } from 'react-redux'
 
-const Tasks = ({ userID }) => {
-  const tasks = getUserTasks(userID);
+const Tasks = () => {
+  const store = useSelector(x=>x)
+  // console.log(store.User.id)
+  const {data} = useGetAllTasksQuery({userID:store.User.id});
+  console.log(data)
   return (
     <div className='grid grid-cols-4 gap-4'>
       <AddTask />
-      <Card />
-      <div>
-        <h2>Tasks for User {userID}</h2>
-        {tasks}
-      </div>
+      {data?.map(item=> <Card id={item.id} {...item}/>)}
     </div>
   )
 }
