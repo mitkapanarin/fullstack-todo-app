@@ -11,31 +11,34 @@ const AddTask = () => {
   const [data, setData] = useState({
     task: "",
     deadline: "",
-    status: false,
+    status: "",
     description: "",
   })
 
   const [createTask] = useCreateTaskMutation()
 
-  const handleSubmit = (e) => {
-    e.preventDefault()
+  const handleSubmit = async (e) => {
+    e.preventDefault();
     try {
-      createTask({
+      await createTask({
         userID: state.User.id,
-        body: data
-      })
+        body: {
+          ...data,
+          status: false,
+        },
+      });
       setData({
-        task: "",
-        deadline: "",
+        task: '',
+        deadline: '',
         status: false,
-        description: "",
-      })
-      setIsOpen(!isOpen)
+        description: '',
+      });
+      setIsOpen(!isOpen);
+    } catch (err) {
+      console.log('could not create task', err);
     }
-    catch (err) {
-      console.log("could not create task", err)
-    }
-  }
+  };
+
   const handleInput = (e) => {
     setData({
       ...data,

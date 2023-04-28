@@ -128,7 +128,7 @@ taskRouter.delete("/delete-task/:userID/:taskID", (req, res)=>{
 
 taskRouter.put("/update-task/:userID/:taskID", (req, res) => {
   const { userID, taskID } = req.params;
-  const { task, deadline, status, description,  } = req.body;
+  const { task, deadline, status, description } = req.body;
   readDataFromFile(databaseName, (err, data) => {
     if (err) {
       res.status(404).json({
@@ -147,7 +147,7 @@ taskRouter.put("/update-task/:userID/:taskID", (req, res) => {
         } else {
           users[userIndex].tasks[taskIndex].task = task || users[userIndex].tasks[taskIndex].task;
           users[userIndex].tasks[taskIndex].deadline = deadline || users[userIndex].tasks[taskIndex].deadline;
-          users[userIndex].tasks[taskIndex].status = status || users[userIndex].tasks[taskIndex].status;
+          users[userIndex].tasks[taskIndex].status = !users[userIndex].tasks[taskIndex].status;
           users[userIndex].tasks[taskIndex].description = description || users[userIndex].tasks[taskIndex].description;
 
           writeDataToFile(databaseName, JSON.stringify(users), (err) => {
@@ -162,6 +162,7 @@ taskRouter.put("/update-task/:userID/:taskID", (req, res) => {
     }
   });
 });
+
 
 
 
