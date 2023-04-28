@@ -12,9 +12,10 @@ const Card = (props) => {
   const [editTask] = useEditTaskMutation()
 
   const handleStatus = () => {
+    const newStatus = !data.status;
     setData((prevData) => ({
       ...prevData,
-      status: !prevData.status,
+      status: newStatus,
     }))
     try {
       editTask({
@@ -22,13 +23,14 @@ const Card = (props) => {
         taskID: id, 
         updatedData: {
           ...data,
-          status: true
+          status: newStatus,
         }
       })
     }
     catch (err) {
       console.log("cannot edit task", err)
     }
+    console.log(newStatus);
   }
 
   return (
