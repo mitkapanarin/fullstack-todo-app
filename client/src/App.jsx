@@ -14,8 +14,8 @@ const App = () => {
     <BrowserRouter>
       <SideBar>
         <Routes>
-          <Route path="/" element={<Home />} />
           <Route element={<PrivateRoute />}>
+            <Route path="/" element={<Home />} />
             <Route path="/user" element={<User />} />
             <Route path="/tasks" element={<Tasks />} />
           </Route>

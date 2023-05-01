@@ -2,10 +2,12 @@ import React, { useState } from 'react'
 import InputField from './InputField'
 import { useEditTaskMutation } from '../store/API/tasksApi'
 import { useSelector } from 'react-redux'
+import Toast from './Toast'
 
 const EditIcon = (props) => {
   const store = useSelector(x => x)
   console.log(store.User.id)
+  const [popup, setPopup] = useState(false)
 
   const { id, task, status, deadline, description } = props
   console.log(props)
@@ -23,6 +25,10 @@ const EditIcon = (props) => {
         taskID: id, 
         updatedData: data
       })
+      setPopup(true)
+      setTimeout(() =>{
+        setPopup(false)
+      }, 2000)
       setIsOpen(false)
     }
     catch (err) {
@@ -71,6 +77,7 @@ const EditIcon = (props) => {
                 </div>
               </div>
             </div>
+            {popup && <Toast message="Task Edited Successfully" />}
           </div>
         </form>
       </>

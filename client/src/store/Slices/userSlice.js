@@ -3,6 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const readData = JSON.parse(localStorage.getItem("userState"))
 
 const initialState = {
+  name: readData?.name || "",
   email: readData?.email || "",
   password: readData?.password || "",  // | is called the pipe operator
   id: readData?.id || "",
@@ -16,15 +17,17 @@ export const userSlice = createSlice({
   initialState,
   reducers: {
     login: (state, action) => {
-      const {email, id, password} = action.payload
+      const {email, id, password, name} = action.payload
       state.email = email;
       state.id = id
       state.password = password
+      state.name = name
 
       localStorage.setItem("userState", JSON.stringify(state))
     },
-    updateUserStateData : (state, action)=>{
+    updateUserStateData : (state, action, name)=>{
       const {email, id, password} = action.payload
+      state.name = name
       state.email = email;
       state.id = id
       state.password = password
@@ -35,6 +38,7 @@ export const userSlice = createSlice({
       state.email = "";
       state.password = "";
       state.id = "";
+      state.name = ""
 
       localStorage.removeItem("userState")
     },

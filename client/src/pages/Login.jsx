@@ -4,11 +4,13 @@ import { useLoginUserMutation } from "../store/API/userApi";
 import { login } from "../store/Slices/userSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import Toast from "../components/Toast";
 
 const Login = () => {
   const dispatch = useDispatch() // initialization
   const navigate = useNavigate()
-  const store = useSelector((z)=>z)
+  const store = useSelector((z) => z)
+  const [popup, setPopup] = useState(false)
   console.log(store)
 
   const [data, setData] = useState({
@@ -18,20 +20,24 @@ const Login = () => {
 
   const [loginUser] = useLoginUserMutation()
 
-  const handleSubmit = async (e)=>{
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    try{
-      const x =  await  loginUser(data)
+    try {
+      const x = await loginUser(data)
       console.log(x.data.findUser)
       dispatch(login(x.data.findUser))
-      navigate("/")
+      setPopup(true)
+      setTimeout(() =>{
+        setPopup(false)
+        navigate("/")
+      }, 1000)
     }
-    catch(err){
+    catch (err) {
       console.log('error occured')
     }
   }
 
-  const handleInput = (e)=>{
+  const handleInput = (e) => {
     setData({
       ...data,
       [e.target.name]: e.target.value
@@ -128,6 +134,7 @@ const Login = () => {
           </div>
         </div>
       </section>
+      {popup && <Toast message="Logged In Successfully" />}
     </div>
   );
 };

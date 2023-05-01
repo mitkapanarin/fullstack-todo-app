@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import { useCreateUserMutation } from "../store/API/userApi";
 import {useNavigate} from 'react-router-dom'
+import Toast from "../components/Toast";
 
 const Signup = () => {
+  const [popup, setPopup] = useState(false)
   const [data, setData] = useState({
     email:"",
     password: ""
@@ -22,7 +24,11 @@ const Signup = () => {
     e.preventDefault();
     try{
       createUser(data)
-      navigate('/login')
+      setPopup(true)
+      setTimeout(()=>{
+        setPopup(false),
+        navigate('/login')
+      }, 1000)
     }
     catch(err){
       console.log(err)
@@ -36,7 +42,7 @@ const Signup = () => {
           <div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
             <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
               <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
-                Create and account
+                Create an account
               </h1>
               <form className="space-y-4 md:space-y-6" onSubmit={handleSubmit}>
               <div>
@@ -135,6 +141,7 @@ const Signup = () => {
           </div>
         </div>
       </section>
+      {popup && <Toast message='Profile created sucessfylly'/>}
     </div>
   );
 };
